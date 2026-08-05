@@ -3,6 +3,7 @@
   "builds": [
     {
       "src": "app/app.py",
+<<<<<<< HEAD
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "50mb"
@@ -18,4 +19,15 @@
   "env": {
     "FRONTEND_URL": "*"
   }
+=======
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app/app.py"
+    }
+  ]
+>>>>>>> d01f353f9618da27ee51f94535596529dcc7629f
 }
