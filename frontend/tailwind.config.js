@@ -6,33 +6,39 @@ export default {
     extend: {
       colors: {
         night: {
-          950: '#060912',
-          900: '#0a0e1a',
-          800: '#111827',
-          700: '#1a2235',
-          600: '#243049',
+          950: '#0b0d12',
+          900: '#11141c',
+          800: '#181c27',
+          700: '#222836',
+          600: '#2e3648',
         },
+        // Single accent — desaturated seafoam (sat < 80%)
         moon: {
-          50: '#f0f4ff',
-          100: '#dce4ff',
-          200: '#b8c7ff',
-          300: '#8ba3ff',
-          400: '#5b7cfa',
-          500: '#4563eb',
-        },
-        dream: {
-          400: '#8b7cf6',
-          500: '#7c6cf0',
+          50: '#eef6f2',
+          100: '#d5e8df',
+          200: '#a8cfbc',
+          300: '#7a9e8f',
+          400: '#5f8678',
+          500: '#4a6b60',
         },
       },
       fontFamily: {
-        sans: ['"Segoe UI Variable"', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['"Segoe UI Variable Display"', '"Segoe UI Variable"', 'system-ui', 'sans-serif'],
-        mono: ['"Cascadia Code"', '"Segoe UI Mono"', 'monospace'],
+        sans: ['Outfit', 'system-ui', 'sans-serif'],
+        display: ['Syne', 'Outfit', 'system-ui', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },
       boxShadow: {
-        bezel: 'inset 0 1px 0 rgba(255,255,255,0.08), 0 24px 64px rgba(0,0,0,0.35)',
-        glow: '0 0 48px rgba(91,124,250,0.15)',
+        bezel: 'inset 0 1px 0 rgba(255,255,255,0.06), 0 20px 48px rgba(8,12,18,0.45)',
+        soft: '0 12px 40px rgba(8,12,18,0.35)',
+      },
+      maxWidth: {
+        shell: '1400px',
+      },
+      zIndex: {
+        skip: '100',
+        nav: '40',
+        overlay: '50',
+        modal: '60',
       },
       animation: {
         'fade-up': 'fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both',

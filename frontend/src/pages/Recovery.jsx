@@ -19,9 +19,9 @@ export default function RecoveryPage() {
     <div>
       <PageHeader title="Recovery Intelligence" description="Predict recovery, energy, fatigue, productivity, mental performance, and workout readiness." />
       <SectionGrid cols={3}>
-        <MetricTile label="Recovery Score" value={data.recovery_score} unit="/100" accent="moon" />
+        <MetricTile label="Recovery Score" value={data.recovery_score} unit="/100" />
         <MetricTile label="Energy Level" value={data.energy_level} unit="/100" />
-        <MetricTile label="Fatigue Level" value={data.fatigue_level} unit="/100" accent="dream" />
+        <MetricTile label="Fatigue Level" value={data.fatigue_level} unit="/100" />
         <MetricTile label="Productivity Index" value={data.productivity_index} unit="/100" />
         <MetricTile label="Mental Performance" value={data.mental_performance} unit="/100" />
         <MetricTile label="Workout Readiness" value={data.workout_readiness} unit="/100" />

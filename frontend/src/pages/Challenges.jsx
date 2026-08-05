@@ -19,7 +19,7 @@ export default function ChallengesPage() {
       <SectionGrid cols={3}>
         <BezelCard><p className="text-xs text-white/45">XP</p><p className="mt-2 text-3xl font-semibold text-moon-300">{data.xp}</p></BezelCard>
         <BezelCard><p className="text-xs text-white/45">Level</p><p className="mt-2 text-3xl font-semibold text-white">{data.level}</p></BezelCard>
-        <BezelCard><p className="text-xs text-white/45">Streak</p><p className="mt-2 text-3xl font-semibold text-dream-400">{data.streak_days} days</p></BezelCard>
+        <BezelCard><p className="text-xs text-white/45">Streak</p><p className="mt-2 text-3xl font-semibold text-moon-300">{data.streak_days} days</p></BezelCard>
       </SectionGrid>
       <div className="mt-6 grid gap-4 lg:grid-cols-2">
         <BezelCard>

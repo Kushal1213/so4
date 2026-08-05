@@ -23,12 +23,17 @@ import ResearchPage from './pages/Research'
 import ApiDocsPage from './pages/ApiDocs'
 import AdminPage from './pages/Admin'
 import RoadmapPage from './pages/Roadmap'
+import NotFound from './pages/NotFound'
+import Privacy from './pages/Privacy'
+import Terms from './pages/Terms'
 
 export default function App() {
   return (
     <SleepProvider>
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
         <Route path="/app" element={<AppLayout />}>
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<DashboardPage />} />
@@ -53,6 +58,7 @@ export default function App() {
           <Route path="admin" element={<AdminPage />} />
           <Route path="roadmap" element={<RoadmapPage />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </SleepProvider>
   )

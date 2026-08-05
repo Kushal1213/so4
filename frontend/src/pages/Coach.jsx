@@ -29,14 +29,14 @@ export default function CoachPage() {
   return (
     <div>
       <PageHeader title="AI Sleep Coach" description="Daily personalized recommendations based on your sleep debt, stress, and recovery profile." />
-      <BezelCard glow className="mb-6">
+      <BezelCard elevated className="mb-6">
         <p className="text-sm text-white/50">{coach.date}</p>
-        <p className="mt-3 text-lg leading-relaxed text-white">{coach.coach_message}</p>
+        <p className="mt-3 text-lg leading-relaxed text-white text-pretty">{coach.coach_message}</p>
       </BezelCard>
       <SectionGrid cols={2}>
         {items.map(([label, value]) => (
           <BezelCard key={label}>
-            <p className="text-xs uppercase tracking-wide text-white/45">{label}</p>
+            <p className="text-[12px] font-medium tracking-wide text-white/45">{label}</p>
             <p className="mt-2 text-base font-medium text-white">{value}</p>
           </BezelCard>
         ))}

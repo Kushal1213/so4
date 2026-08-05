@@ -41,7 +41,7 @@ export default function ChatPage() {
       <BezelCard className="mb-4">
         <div className="flex flex-wrap gap-2">
           {suggestions.map((item) => (
-            <button key={item} type="button" onClick={() => send(item)} className="rounded-full bg-white/5 px-3 py-1.5 text-xs text-white/70 ring-1 ring-white/10 hover:bg-white/10">
+            <button key={item} type="button" onClick={() => send(item)} className="rounded-md bg-white/5 px-3 py-1.5 text-xs text-white/70 ring-1 ring-white/10 transition-colors hover:bg-white/10 active:scale-[0.98]">
               {item}
             </button>
           ))}
@@ -50,13 +50,13 @@ export default function ChatPage() {
       <BezelCard>
         <div className="max-h-[420px] space-y-3 overflow-y-auto">
           {messages.map((msg, index) => (
-            <div key={index} className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm ${msg.role === 'user' ? 'ml-auto bg-moon-400/20 text-moon-100' : 'bg-white/5 text-white/75'}`}>
+            <div key={index} className={`max-w-[85%] rounded-xl px-4 py-3 text-sm ${msg.role === 'user' ? 'ml-auto bg-moon-300/20 text-moon-100' : 'bg-white/5 text-white/75'}`}>
               {msg.text}
             </div>
           ))}
         </div>
         <form className="mt-4 flex gap-2" onSubmit={(e) => { e.preventDefault(); send(input) }}>
-          <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Ask about your sleep..." className="flex-1 rounded-full border border-white/10 bg-night-900 px-4 py-3 text-white outline-none focus:border-moon-400/50" />
+          <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Ask about your sleep..." className="flex-1 rounded-lg border border-white/10 bg-night-900 px-4 py-3 text-white outline-none transition-colors focus:border-moon-300/50" />
           <PillButton disabled={loading}><PaperPlaneTilt size={16} weight="bold" /> Send</PillButton>
         </form>
       </BezelCard>

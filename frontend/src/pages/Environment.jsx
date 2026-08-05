@@ -33,7 +33,7 @@ export default function EnvironmentPage() {
       {result && (
         <>
           <SectionGrid cols={4}>
-            <MetricTile label="Environment Score" value={result.environment_score} unit="/100" accent="moon" />
+            <MetricTile label="Environment Score" value={result.environment_score} unit="/100" />
           </SectionGrid>
           <div className="mt-4 grid gap-4 md:grid-cols-2">
             {result.factors.map((factor) => (

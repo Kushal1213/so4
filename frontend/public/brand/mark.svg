@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Sleep Oracle">
+  <!-- Crescent-O: moon aperture / oracle window -->
+  <circle cx="32" cy="32" r="28" stroke="#7a9e8f" stroke-width="1.5" opacity="0.35"/>
+  <path
+    d="M38.5 14.2a18.5 18.5 0 1 0 0 35.6 14.2 14.2 0 1 1 0-35.6z"
+    fill="#7a9e8f"
+  />
+</svg>

@@ -31,9 +31,9 @@ export default function TimelinePage() {
             <LineChart data={data}>
               <XAxis dataKey={period === 'yearly' ? 'label' : 'date'} tick={{ fill: 'rgba(255,255,255,0.45)', fontSize: 11 }} />
               <YAxis tick={{ fill: 'rgba(255,255,255,0.45)', fontSize: 11 }} />
-              <Tooltip contentStyle={{ background: '#111827', border: '1px solid rgba(255,255,255,0.1)' }} />
-              <Line type="monotone" dataKey="sleep_score" stroke="#5b7cfa" strokeWidth={2} dot={false} />
-              <Line type="monotone" dataKey="duration_hours" stroke="#8b7cf6" strokeWidth={2} dot={false} />
+              <Tooltip contentStyle={{ background: '#181c27', border: '1px solid rgba(255,255,255,0.1)' }} />
+              <Line type="monotone" dataKey="sleep_score" stroke="#7a9e8f" strokeWidth={2} dot={false} />
+              <Line type="monotone" dataKey="duration_hours" stroke="#a8cfbc" strokeWidth={2} dot={false} />
             </LineChart>
           </ResponsiveContainer>
         </div>

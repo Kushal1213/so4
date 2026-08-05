@@ -38,7 +38,7 @@ export default function ApiDocsPage() {
         {endpoints.map((endpoint) => (
           <BezelCard key={endpoint.path}>
             <div className="flex flex-wrap items-center gap-3">
-              <span className="rounded-full bg-moon-400/15 px-2.5 py-1 font-mono text-xs text-moon-300">{endpoint.method}</span>
+              <span className="rounded-md bg-moon-300/15 px-2.5 py-1 font-mono text-xs text-moon-300">{endpoint.method}</span>
               <code className="font-mono text-sm text-white">{endpoint.path}</code>
             </div>
             <p className="mt-2 text-sm text-white/55">{endpoint.description}</p>

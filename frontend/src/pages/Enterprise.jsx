@@ -19,19 +19,19 @@ export default function EnterprisePage() {
       <PageHeader title="Enterprise Sleep Analytics" description="Anonymous workforce sleep metrics, burnout risk, department trends, and shift-work impact." />
       <SectionGrid cols={3}>
         <MetricTile label="Average Sleep Score" value={data.average_sleep_score} unit="/100" />
-        <MetricTile label="Burnout Risk" value={data.burnout_risk_percent} unit="%" accent="dream" />
+        <MetricTile label="Burnout Risk" value={data.burnout_risk_percent} unit="%" />
         <MetricTile label="Sample Size" value={data.anonymous_sample_size} />
       </SectionGrid>
       <div className="mt-6 grid gap-4 lg:grid-cols-2">
         <BezelCard>
-          <h3 className="font-semibold text-white">Department Trends</h3>
+          <h3 className="font-display font-semibold text-white">Department trends</h3>
           <div className="mt-4 h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={data.departments}>
                 <XAxis dataKey="name" tick={{ fill: 'rgba(255,255,255,0.45)', fontSize: 11 }} />
                 <YAxis tick={{ fill: 'rgba(255,255,255,0.45)', fontSize: 11 }} />
-                <Tooltip contentStyle={{ background: '#111827', border: '1px solid rgba(255,255,255,0.1)' }} />
-                <Bar dataKey="avg_sleep" fill="#5b7cfa" radius={[8, 8, 0, 0]} />
+                <Tooltip contentStyle={{ background: '#181c27', border: '1px solid rgba(255,255,255,0.1)' }} />
+                <Bar dataKey="avg_sleep" fill="#7a9e8f" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>

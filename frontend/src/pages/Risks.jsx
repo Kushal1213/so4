@@ -19,10 +19,10 @@ export default function RisksPage() {
       <PageHeader title="Sleep Risk Prediction" description="Multiple ML-backed risk models with individual confidence scores and explainable contributing factors." />
       <div className="space-y-4">
         {predictions.map((item) => (
-          <BezelCard key={item.risk} glow={item.level === 'high'}>
+          <BezelCard key={item.risk} elevated={item.level === 'high'}>
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
-                <h3 className="text-lg font-semibold text-white">{item.risk}</h3>
+                <h3 className="font-display text-lg font-semibold text-white">{item.risk}</h3>
                 <p className="mt-1 text-sm text-white/55">{item.explanation.explanation}</p>
               </div>
               <div className="flex items-center gap-3">
