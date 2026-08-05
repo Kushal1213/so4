@@ -1,27 +1,16 @@
-<<<<<<< HEAD
 # Render Blueprint - deploy backend + frontend with one click
 # Dashboard -> New -> Blueprint -> connect this repo
-=======
-# Render Blueprint — deploy both services with one click
-# Dashboard → New → Blueprint → connect this repo
->>>>>>> d01f353f9618da27ee51f94535596529dcc7629f
 services:
   - type: web
     name: sleep-oracle-backend
     runtime: python
     plan: free
-<<<<<<< HEAD
     buildCommand: pip install -r requirements.txt && python retrain_model.py
     startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 2 --timeout 120 --chdir app app:app
-=======
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn --chdir app app:app
->>>>>>> d01f353f9618da27ee51f94535596529dcc7629f
     healthCheckPath: /health
     envVars:
       - key: PYTHON_VERSION
         value: "3.11.9"
-<<<<<<< HEAD
       - key: FRONTEND_URL
         sync: false
 
@@ -39,17 +28,3 @@ services:
     envVars:
       - key: VITE_API_URL
         sync: false
-=======
-
-  - type: web
-    name: sleep-oracle-frontend
-    runtime: node
-    plan: free
-    rootDir: frontend
-    buildCommand: npm install && npm run build
-    startCommand: npm run start
-    envVars:
-      - key: VITE_API_URL
-        value: https://sleep-oracle-backend.onrender.com
-        # After deployment, update this with your actual backend URL
->>>>>>> d01f353f9618da27ee51f94535596529dcc7629f

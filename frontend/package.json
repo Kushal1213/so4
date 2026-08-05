@@ -6,28 +6,18 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-<<<<<<< HEAD
     "preview": "vite preview --host 0.0.0.0",
     "start": "serve -s dist -l tcp://0.0.0.0:${PORT:-4173}"
-=======
-    "preview": "vite preview",
-    "start": "vite preview --host 0.0.0.0"
->>>>>>> d01f353f9618da27ee51f94535596529dcc7629f
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
     "axios": "^1.6.0",
-<<<<<<< HEAD
     "motion": "^12.43.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^7.18.2",
     "recharts": "^3.10.1",
     "serve": "^14.2.4"
-=======
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
->>>>>>> d01f353f9618da27ee51f94535596529dcc7629f
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

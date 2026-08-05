@@ -3,7 +3,6 @@ from flask_cors import CORS
 import pickle
 import pandas as pd
 import os
-<<<<<<< HEAD
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -60,21 +59,10 @@ if cors_origins == ['*']:
     CORS(app)
 else:
     CORS(app, origins=cors_origins)
-=======
-
-app = Flask(__name__)
-
-frontend_url = os.environ.get('FRONTEND_URL', '*')
-if frontend_url == '*':
-    CORS(app)
-else:
-    CORS(app, origins=[frontend_url, 'http://localhost:5173'])
->>>>>>> d01f353f9618da27ee51f94535596529dcc7629f
 
 model_path = os.path.join(os.path.dirname(__file__), 'model.pkl')
 encoders_path = os.path.join(os.path.dirname(__file__), 'encoders.pkl')
 
-<<<<<<< HEAD
 model = None
 target_encoder = None
 
@@ -84,20 +72,6 @@ if os.path.exists(model_path) and os.path.exists(encoders_path):
     with open(encoders_path, 'rb') as f:
         encoders = pickle.load(f)
     target_encoder = encoders['target']
-=======
-if not os.path.exists(model_path) or not os.path.exists(encoders_path):
-    raise FileNotFoundError(
-        'Model files missing. Run "python retrain_model.py" from the project root.'
-    )
-
-with open(model_path, 'rb') as f:
-    model = pickle.load(f)
-
-with open(encoders_path, 'rb') as f:
-    encoders = pickle.load(f)
-
-target_encoder = encoders['target']
->>>>>>> d01f353f9618da27ee51f94535596529dcc7629f
 
 FEATURE_NAMES = [
     'Gender', 'Age', 'Occupation', 'Sleep Duration', 'Quality of Sleep',
@@ -123,18 +97,10 @@ def extract_features(data):
 
 
 def apply_heuristic_rules(data, ml_prediction, ml_probabilities):
-<<<<<<< HEAD
-=======
-    """
-    Apply heuristic rules to override ML predictions when inputs clearly indicate sleep disorders.
-    This makes the demo more realistic and useful.
-    """
->>>>>>> d01f353f9618da27ee51f94535596529dcc7629f
     sleep_duration = float(data.get('sleep_duration', 7))
     sleep_quality = float(data.get('quality_of_sleep', 7))
     stress_level = float(data.get('stress_level', 5))
     heart_rate = float(data.get('heart_rate', 72))
-<<<<<<< HEAD
 
     if sleep_duration < 5 or sleep_quality <= 3:
         if stress_level >= 7:
@@ -185,43 +151,10 @@ def default_profile(data=None):
     }
 
 
-=======
-    
-    # Rule 1: Very poor sleep (less than 5 hours OR quality <= 3)
-    if sleep_duration < 5 or sleep_quality <= 3:
-        if stress_level >= 7:
-            return 'Insomnia', {str(cls): (0.8 if 'Insomnia' in str(cls) else 0.1) for cls in ml_probabilities.keys()}
-        else:
-            return 'Sleep Apnea', {str(cls): (0.75 if 'Apnea' in str(cls) else 0.125) for cls in ml_probabilities.keys()}
-    
-    # Rule 2: High stress (8-10) with poor sleep quality (<= 5)
-    if stress_level >= 8 and sleep_quality <= 5:
-        return 'Insomnia', {str(cls): (0.7 if 'Insomnia' in str(cls) else 0.15) for cls in ml_probabilities.keys()}
-    
-    # Rule 3: Elevated heart rate (>= 90) with poor sleep
-    if heart_rate >= 90 and (sleep_duration < 6 or sleep_quality <= 5):
-        return 'Sleep Apnea', {str(cls): (0.7 if 'Apnea' in str(cls) else 0.15) for cls in ml_probabilities.keys()}
-    
-    # Rule 4: Combination of moderate risk factors
-    risk_score = 0
-    if sleep_duration < 6: risk_score += 2
-    if sleep_quality <= 5: risk_score += 2
-    if stress_level >= 7: risk_score += 2
-    if heart_rate >= 85: risk_score += 1
-    
-    if risk_score >= 5:
-        return 'Insomnia', {str(cls): (0.65 if 'Insomnia' in str(cls) else 0.175) for cls in ml_probabilities.keys()}
-    
-    # Default to ML prediction if no rules triggered
-    return ml_prediction, ml_probabilities
-
-
->>>>>>> d01f353f9618da27ee51f94535596529dcc7629f
 @app.route('/', methods=['GET'])
 def index():
     return jsonify({
         'service': 'Sleep Oracle API',
-<<<<<<< HEAD
         'version': '2.0.0',
         'platform': 'Sleep Intelligence Platform',
         'endpoints': {
@@ -247,16 +180,10 @@ def index():
             'notifications': 'POST /api/notifications',
             'journal_insights': 'POST /api/journal/insights',
             'health': 'GET /health',
-=======
-        'endpoints': {
-            'predict': 'POST /predict',
-            'health': 'GET /health'
->>>>>>> d01f353f9618da27ee51f94535596529dcc7629f
         }
     })
 
 
-<<<<<<< HEAD
 @app.route('/health', methods=['GET'])
 def health():
     return jsonify({
@@ -273,52 +200,30 @@ def predict():
             return jsonify({'error': 'Model not loaded. Run retrain_model.py.', 'status': 'error'}), 503
 
         data = get_json_body()
-=======
-@app.route('/predict', methods=['POST'])
-def predict():
-    try:
-        data = request.get_json()
-        if not data:
-            return jsonify({'error': 'Request body must be JSON', 'status': 'error'}), 400
-
->>>>>>> d01f353f9618da27ee51f94535596529dcc7629f
         features = extract_features(data)
         df = pd.DataFrame([features], columns=FEATURE_NAMES)
 
         prediction_numeric = model.predict(df)[0]
         prediction_label = target_encoder.inverse_transform([prediction_numeric])[0]
-<<<<<<< HEAD
-=======
-
->>>>>>> d01f353f9618da27ee51f94535596529dcc7629f
         probabilities = model.predict_proba(df)[0]
         class_probabilities = {
             str(cls): float(prob)
             for cls, prob in zip(target_encoder.classes_, probabilities)
         }
 
-<<<<<<< HEAD
         final_prediction, final_probabilities = apply_heuristic_rules(data, prediction_label, class_probabilities)
         scores = compute_assessment_scores(data)
-=======
-        # Apply heuristic rules to improve prediction accuracy
-        final_prediction, final_probabilities = apply_heuristic_rules(data, prediction_label, class_probabilities)
->>>>>>> d01f353f9618da27ee51f94535596529dcc7629f
 
         return jsonify({
             'prediction': final_prediction,
             'probabilities': final_probabilities,
-<<<<<<< HEAD
             'scores': scores,
-=======
->>>>>>> d01f353f9618da27ee51f94535596529dcc7629f
             'status': 'success'
         })
     except Exception as e:
         return jsonify({'error': str(e), 'status': 'error'}), 500
 
 
-<<<<<<< HEAD
 @app.route('/api/assessment', methods=['POST'])
 def assessment():
     data = default_profile(get_json_body())
@@ -463,11 +368,6 @@ def journal_insights():
     body = get_json_body()
     entries = body.get('entries', [])
     return jsonify({'status': 'success', **correlate_journal(entries)})
-=======
-@app.route('/health', methods=['GET'])
-def health():
-    return jsonify({'status': 'healthy', 'model': 'loaded'})
->>>>>>> d01f353f9618da27ee51f94535596529dcc7629f
 
 
 if __name__ == '__main__':
