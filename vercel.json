@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "app/app.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "50mb"
+      }
+    }
+  ],
+  "routes": [
+    { "src": "/health", "dest": "app/app.py" },
+    { "src": "/predict", "dest": "app/app.py" },
+    { "src": "/api/(.*)", "dest": "app/app.py" },
+    { "src": "/", "dest": "app/app.py" }
+  ],
+  "env": {
+    "FRONTEND_URL": "*"
+  }
+}
